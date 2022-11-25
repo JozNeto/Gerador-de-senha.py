@@ -1,1 +1,2 @@
+password-strength==0.0.3.post2
 PySimpleGUI==4.60.4

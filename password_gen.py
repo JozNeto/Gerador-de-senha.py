@@ -1,8 +1,9 @@
 import random
+from password_strength import PasswordStats as ps
 
 
 class PasswordGenerator:
-    def __init__(self, password_name=None, nr_letters=0, nr_upper_letters=0, nr_symbols=0, nr_numbers=0) -> None:
+    def __init__(self, password_name=None, nr_letters=None, nr_upper_letters=None, nr_symbols=None, nr_numbers=None) -> None:
         self.LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                         'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         self.UPPER_LETTERS = [letter.upper() for letter in self.LETTERS]
@@ -76,3 +77,20 @@ class PasswordGenerator:
     def save_password(self) -> None:
         with open("my passwords.txt", "a", encoding="utf-8") as file:
             file.write(f"{self.password_name}\n{self.password}\n\n")
+
+    def get_password_strength(self) -> str:
+        if len(self.password) != 0:
+            password_strength = ps(self.password)
+            if password_strength.strength() <= 0.3:
+                self.password_stength = "Very weak"
+            elif password_strength.strength() >= 0.3 and password_strength.strength() <= 0.5:
+                self.password_stength = "Weak"
+            elif password_strength.strength() >= 0.5 and password_strength.strength() <= 0.6:
+                self.password_stength = "Medium"
+            elif password_strength.strength() >= 0.6 and password_strength.strength() <= 0.8:
+                self.password_stength = "Strong"
+            elif password_strength.strength() >= 0.8:
+                self.password_stength = "Very strong"
+            return self.password_stength
+        else:
+            return "No password generated"
