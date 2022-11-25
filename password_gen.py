@@ -2,7 +2,7 @@ import random
 
 
 class PasswordGenerator:
-    def __init__(self) -> None:
+    def __init__(self, password_name=None, nr_letters=0, nr_upper_letters=0, nr_symbols=0, nr_numbers=0) -> None:
         self.LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                         'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         self.UPPER_LETTERS = [letter.upper() for letter in self.LETTERS]
@@ -11,11 +11,11 @@ class PasswordGenerator:
                         '^', '~', '@', '-', '_', 'ç', 'Ç', '`', '/', '|', 'ª', 'º', '¿',]
         self.password_list = []
         self.password = ""
-        self.password_name = None
-        self.nr_letters = None
-        self.nr_upper_letters = None
-        self.nr_symbols = None
-        self.nr_numbers = None
+        self.password_name = password_name
+        self.nr_letters = nr_letters
+        self.nr_upper_letters = nr_upper_letters
+        self.nr_symbols = nr_symbols
+        self.nr_numbers = nr_numbers
 
     def get_nr_letters(self) -> None:
         while True:
