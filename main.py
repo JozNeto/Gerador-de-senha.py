@@ -6,12 +6,13 @@ def main() -> None:
     sg.theme('Reddit')
     sg.set_options(font=("Arial", 12))
     layout = [
-        [sg.Text('Password Generator')],
+        [sg.Text('Password penerator')],
         [sg.Text('Password letters amount')], [sg.Input(key='letters',)],
         [sg.Text('Password upper letters amount')], [
             sg.Input(key='upper_letters')],
         [sg.Text('Password symbols amount')], [sg.Input(key='symbols')],
         [sg.Text('Password numbers amount')], [sg.Input(key='numbers')],
+        [sg.Text('Chinese characters amount')], [sg.Input(key='chinese')],
         [sg.Text('Password name for saving')], [sg.Input(key='password_name')],
         [sg.Checkbox('Save password', key='save_password')],
         [sg.Button('Generate Password'), sg.Button('Auto generate'), sg.Button('Exit')],
@@ -32,6 +33,8 @@ def main() -> None:
                 values['symbols']) if values['symbols'] != '' else 0
             values['numbers'] = int(
                 values['numbers']) if values['numbers'] != '' else 0
+            values['chinese'] = int(
+                values['chinese']) if values['chinese'] != '' else 0
             values['password_name'] = values['password_name'] if values['password_name'] != '' else "My password"
             pg = PasswordGenerator(
                 values['password_name'], values['letters'], values['upper_letters'], values['symbols'], values['numbers'])
@@ -49,7 +52,7 @@ def main() -> None:
         elif event == 'Auto generate':
             values['password_name'] = values['password_name'] if values['password_name'] != '' else "My password"
             pg = PasswordGenerator(
-                values['password_name'], 5, 5, 5, 5)
+                values['password_name'], 5, 5, 5, 5, 5)
             pg.generate_password()
             window['password_strength'].update(
                 f"Password strength: {pg.get_password_strength()}")
