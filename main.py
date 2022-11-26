@@ -6,7 +6,7 @@ def main() -> None:
     sg.theme('Reddit')
     sg.set_options(font=("Arial", 12))
     layout = [
-        [sg.Text('Password penerator')],
+        [sg.Text('Password Generator')],
         [sg.Text('Password letters amount')], [sg.Input(key='letters',)],
         [sg.Text('Password upper letters amount')], [
             sg.Input(key='upper_letters')],
@@ -15,7 +15,7 @@ def main() -> None:
         [sg.Text('Chinese characters amount')], [sg.Input(key='chinese')],
         [sg.Text('Password name for saving')], [sg.Input(key='password_name')],
         [sg.Checkbox('Save password', key='save_password')],
-        [sg.Button('Generate Password'), sg.Button('Auto generate'), sg.Button('Exit')],
+        [sg.Button('Generate password'), sg.Button('Auto generate'), sg.Button('Exit')],
         [sg.Text('Generated password:')], [sg.Text('Password strength: No password generated',
                                                    key='password_strength')], [sg.Input(key='password')]
     ]
