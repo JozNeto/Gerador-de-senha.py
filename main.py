@@ -24,7 +24,7 @@ def main() -> None:
         event, values = window.read()
         if event == sg.WIN_CLOSED or event == 'Exit':
             break
-        elif event == 'Generate Password':
+        elif event == 'Generate password':
             values['letters'] = int(
                 values['letters']) if values['letters'] != '' else 0
             values['upper_letters'] = int(
