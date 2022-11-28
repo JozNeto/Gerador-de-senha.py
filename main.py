@@ -37,7 +37,7 @@ def main() -> None:
                 values['chinese']) if values['chinese'] != '' else 0
             values['password_name'] = values['password_name'] if values['password_name'] != '' else "My password"
             pg = PasswordGenerator(
-                values['password_name'], values['letters'], values['upper_letters'], values['symbols'], values['numbers'])
+                values['password_name'], values['letters'], values['upper_letters'], values['symbols'], values['numbers'], values['chinese'])
             pg.generate_password()
             window['password_strength'].update(
                 f"Password strength: {pg.get_password_strength()}")
